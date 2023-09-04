@@ -1,0 +1,43 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+inputs:
+  migrations_directory:
+    description: 'Directory to run the action on, from the repo root.'
+    required: true
+    default: './migrations'
+  config:
+    description: 'Path to the configuration file (default: ./refinery.toml).'
+    required: true
+    default: ''
+  db_uri_env_var:
+    description: 'Load the database connection string from the specified environment variable.'
+    required: true
+    default: ''
+  single_transactions:
+    description: 'Run migrations grouped in a single transaction.'
+    required: true
+    default: 'false'
+  target:
+    description: 'Migrate to the specified target version.'
+    required: true
+    default: ''
+  additional_args:
+    description: 'Additional arguments to pass to the Refinery CLI.'
+    required: true
+    default: ''
+  refinery_version:
+    description: 'The version of Refinery CLI to use. Defaults to `latest`.'
+    required: true
+    default: 'latest'
+  github_token:
+    description: 'GitHub token used for making authenticated requests to the GitHub API and avoid rate limiting.'
+    required: true
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'database'
+  color: 'orange'
